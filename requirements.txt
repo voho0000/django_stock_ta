@@ -1,4 +1,5 @@
+django
 yfinance
 mplfinance
-ta-lib
 pandas_ta
+ta-lib

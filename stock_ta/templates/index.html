@@ -17,7 +17,7 @@
             <div class="col-4 text-start">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="row">
+                    <div class="row" style="margin-bottom:20px">
                         <div class="col">
                             <input type="text" class="form-control" name="code" placeholder="code:2330">
                         </div>
@@ -27,22 +27,19 @@
                         <div class="col">
                             <input type="text" class="form-control" name="interval" placeholder="interval:5m"><br>
                         </div>
+                        <small class="form-text text-muted">單位代碼為分鐘m, 小時h, 週wk, 月mo, 年y</small>
                     </div>
-
                     <label>BIAS</label>
                     <input type="range" class="form-control-range" name="bias" min="0" max="20" value="5" oninput="this.nextElementSibling.value = this.value">
-                    <output>5</output>
-                    <br>
+                    <output>5</output><br>
                     <label>KD 9</label><br>
                     <label>RSI</label>
                     <input type="range" class="form-control-range" name="rsi" min="0" max="20" value="6" oninput="this.nextElementSibling.value = this.value">
                     <output>6</output><br>
                     <label>WILLR</label>
                     <input type="range" class="form-control-range" name="willr" min="0" max="20" value="9" oninput="this.nextElementSibling.value = this.value">
-                    <output>9</output><br><br>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    <br>
-                    <br>
+                    <output>9</output><br>
+                    <button class="btn btn-primary" type="submit" style="margin:20px">Submit</button>
                  </form>
                  <div>
                     <table class="table table-sm" >
@@ -111,14 +108,16 @@
                 </div>
             </div>
             <div class="col-8">
-                <img src="../static/ta.png" class="img-fluid float-left" alt="stock ta picture">
-                <br>
-                <br>
-                <i class="fa fa-caret-down" style="color: green; display:inline;" aria-hidden="true"></i>
-                <p style="color: green; display:inline;">: 高檔背離(Top divergence)</p><br>
-                <i class="fa-solid fa-caret-up" style="color: red; display:inline;"></i>
-                <p style="color: red; display:inline;">: 低檔背離(Bottom Divergence)</p><br>
-                
+                <div class="row" style="margin-bottom:10px">
+                    <img src="../static/ta.png" class="img-fluid float-left" alt="stock ta picture">
+                </div>
+                <div class="row" >
+                    <i class="fa fa-caret-down" style="color: green;" aria-hidden="true">: 高檔背離</i>
+                    <p style="color: green;">(Top divergence)</p>
+                    <i class="fa-solid fa-caret-up" style="color: red">: 低檔背離</i>
+                    <p style="color: red;">(Bottom Divergence)</p>
+                </div>
+      
             </div>
         </div>
     </div>
