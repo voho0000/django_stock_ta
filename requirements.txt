@@ -1,0 +1,4 @@
+yfinance
+mplfinance
+ta-lib
+pandas_ta
