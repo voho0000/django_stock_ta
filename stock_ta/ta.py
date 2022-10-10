@@ -6,6 +6,8 @@ import talib
 import pandas_ta as ta
 from scipy.signal import argrelextrema
 import numpy as np
+import matplotlib
+matplotlib.use('SVG')
 
 def get_raw_df(code, period, interval):
     raw_df = yf.download(str(code)+'.tw', period=str(period), interval=str(interval))
@@ -159,7 +161,6 @@ def make_plot(raw_df, ta_df, Divergences):
     if Divergences['WILLR_Top']['value']:
         plot_list.append(mpf.make_addplot(Divergences['WILLR_Top']['value'],type='scatter',markersize=50,color='g',marker='v', panel =5, secondary_y=False))
     fig, axlist = mpf.plot(raw_df,style='yahoo',type='candle',addplot=[apd]+ap1+ap2+ap3+ap4+plot_list, figsize=(11,7), volume=True, returnfig=True)
-    fig.tight_layout()
     axlist[2].set_yticklabels([])
     axlist[2].set_ylabel('Volumn')
     axlist[4].set_yticklabels([])

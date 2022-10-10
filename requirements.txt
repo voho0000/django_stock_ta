@@ -2,4 +2,4 @@ django
 yfinance
 mplfinance
 pandas_ta
-ta-lib
+scipy

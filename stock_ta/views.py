@@ -15,7 +15,7 @@ def index(request):
         raw_df = get_raw_df(code, period, interval)
         if raw_df.empty:
             # if the stock was not in the yahoo finance database
-            return HttpResponseNotFound("This stock is not in the yahoo finance database")
+            return HttpResponseNotFound("This stock is not in the yahoo finance database, or your time unit is not available")
         else:
             isempty = check_empty(raw_df, willr, bias, rsi)
             if isempty:
@@ -23,6 +23,6 @@ def index(request):
                 return HttpResponseNotFound("You need to set longer period or shorter interval to calculate ta.")
             else:
                 Divergences = get_plot(raw_df, willr, bias, rsi)
-                return render(request, 'index.html', {'Divergences':Divergences}) 
+                return render(request, 'index.html', {'Divergences':Divergences, 'code':code, 'period':period, 'interval':interval}) 
     else:
         return render(request, 'index.html', {}) 
