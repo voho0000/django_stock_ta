@@ -10,27 +10,24 @@
 </head>
 <body>
     <div class="container text-center">
-        <div class="row">
-            <h1>背離(Divergence)</h1>
+        <div class="row" style="margin-top:10px">
+            <h3>背離(Divergence)</h3>
         </div>
         <div class="row">
             <div class="col-4 text-start">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="row" style="margin-bottom:20px">
+                    <div class="row" >
                         <div class="col">
-                            <input type="text" class="form-control" name="code" placeholder="code:{{ code }}">
+                            <input type="text" class="form-control" name="code" placeholder="code:{{ code }}", value = "{{ code }}">
                         </div>
                         
                         <div class="col">
-                            <input type="text" class="form-control" name="period" placeholder="period:{{ period}}">
+                            <input type="text" class="form-control" name="period" placeholder="period:{{ period}}", value = "{{ period }}">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" name="interval" placeholder="interval:{{ interval }}"><br>
+                            <input type="text" class="form-control" name="interval" placeholder="interval:{{ interval }}", value = "{{ interval }}"><br>
                         </div>
-                        <small class="form-text text-muted">目前interval支援的時間間隔為：1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo。</small>
-                        <small class="form-text text-muted">interval為1m的話，period不可超過7天，interval小於1天的話，period不可大於60天。</small>
-                        <small class="form-text text-muted">單位代碼為分鐘m, 小時h, 天d, 週wk, 月mo, 年y</small>
                     </div>
                     <label>BIAS</label>
                     <input type="range" class="form-control-range" name="bias" min="0" max="20" value="5" oninput="this.nextElementSibling.value = this.value">
@@ -44,16 +41,16 @@
                     <output>9</output><br>
                     <button class="btn btn-primary" type="submit" style="margin:20px">Submit</button>
                  </form>
-                 <div>
+                 <div class="text-center">
                     <table class="table table-sm" >
                         <thead>
-                          <tr>
-                            <th scope="col">高檔背離</th>
+                          <tr >
+                            <th scope="col"><i class="fa fa-caret-down" style="color: green;"></i></th>
                             <th scope="col">前個peak</th>
                             <th scope="col">這個peak</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                           <tr>
                             <th scope="row">BIAS</th>
                             <td>{{Divergences.bias_Top.time.0.1}}</td>
@@ -79,12 +76,12 @@
                       <table class="table table-sm" >
                         <thead>
                           <tr>
-                            <th scope="col">低檔背離</th>
+                            <th scope="col"><i class="fa-solid fa-caret-up" style="color: red"></i></th>
                             <th scope="col">前個peak</th>
                             <th scope="col">這個peak</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                           <tr>
                             <th scope="row">BIAS</th>
                             <td>{{Divergences.bias_Bottom.time.0.1}}</td>
@@ -115,10 +112,17 @@
                     <img id="img" src="../static/ta.png"+ new Date().getTime(); class="img-fluid float-left" alt="stock ta picture">
                 </div>
                 <div class="row" >
-                    <i class="fa fa-caret-down" style="color: green;" aria-hidden="true">: 高檔背離</i>
-                    <p style="color: green;">(Top divergence)</p>
+                  <div class="col-3 text-center">
+                    <i class="fa fa-caret-down" style="color: green;">: 高檔背離</i>
+                    <p style="color: green; margin-bottom: 5px;">(Top divergence)</p>
                     <i class="fa-solid fa-caret-up" style="color: red">: 低檔背離</i>
                     <p style="color: red;">(Bottom Divergence)</p>
+                  </div>
+                  <div class="col-9 text-start">
+                    <small class="form-text text-muted">支援的時間間隔為：1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo。</small><br>
+                    <small class="form-text text-muted">時間間隔為1m的話，時長不可超過7天，時間間隔小於1天的話，時長建議不大於60天。</small><br>
+                    <small class="form-text text-muted">單位代碼為分鐘m, 小時h, 天d, 週wk, 月mo, 年y。</small>
+                  </div>
                 </div>
       
             </div>
@@ -129,10 +133,11 @@
       function update() {
         var source = '../static/ta.png',
             timestamp = (new Date()).getTime(),
-            newUrl = source + '#' + timestamp;
+            newUrl = source + '?time' + timestamp;
         document.getElementById("img").src = newUrl;
-        setTimeout(update, 2000);
+        setTimeout(update, 3600000);
       }
+      
       update()
 
     </script>

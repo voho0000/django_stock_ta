@@ -108,7 +108,7 @@ def BottomDivergence(ta_df, raw_df, num=3):
                 continue
             else:
                 lesser_ind = signal.index(lesser[-1])
-                if raw_df['Close'][current_ind] > raw_df['Close'][lesser_ind]:
+                if raw_df['Close'][current_ind] < raw_df['Close'][lesser_ind]:
                     BottomSignal['time'].append([raw_df.index[current_ind], raw_df.index[lesser_ind]])
                     for i,value in enumerate(ta_df):
                         if i in [current_ind, lesser_ind]:
