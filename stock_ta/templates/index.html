@@ -39,15 +39,17 @@
                     <label>WILLR</label>
                     <input type="range" class="form-control-range" name="willr" min="0" max="20" value="9" oninput="this.nextElementSibling.value = this.value">
                     <output>9</output><br>
-                    <button class="btn btn-primary" type="submit" style="margin:20px">Submit</button>
+ 			    <div class="text-center">
+                    	<button class="btn btn-primary" type="submit" style="margin:20px">Submit</button>
+			    </div>
                  </form>
                  <div class="text-center">
                     <table class="table table-sm" >
-                        <thead>
+                        <thead >
                           <tr >
                             <th scope="col"><i class="fa fa-caret-down" style="color: green;"></i></th>
-                            <th scope="col">前個peak</th>
-                            <th scope="col">這個peak</th>
+                            <th scope="col" style="font-size: 14px;">前個peak</th>
+                            <th scope="col" style="font-size: 14px;">這個peak</th>
                           </tr>
                         </thead>
                         <tbody style="font-size: 12px;">
@@ -77,8 +79,8 @@
                         <thead>
                           <tr>
                             <th scope="col"><i class="fa-solid fa-caret-up" style="color: red"></i></th>
-                            <th scope="col">前個peak</th>
-                            <th scope="col">這個peak</th>
+                            <th scope="col" style="font-size: 14px;">前個peak</th>
+                            <th scope="col" style="font-size: 14px;">這個peak</th>
                           </tr>
                         </thead>
                         <tbody style="font-size: 12px;">
@@ -112,13 +114,13 @@
                     <img id="img" src="../static/ta.png"+ new Date().getTime(); class="img-fluid float-left" alt="stock ta picture">
                 </div>
                 <div class="row" >
-                  <div class="col-3 text-center">
-                    <i class="fa fa-caret-down" style="color: green;">: 高檔背離</i>
-                    <p style="color: green; margin-bottom: 5px;">(Top divergence)</p>
+                  <div class="col-2 text-center">
+                    <i class="fa fa-caret-down" style="color: green; ">: 高檔背離</i>
+                    <p style="color: green; margin-bottom: 5px; font-size:12px;">(Top divergence)</p>
                     <i class="fa-solid fa-caret-up" style="color: red">: 低檔背離</i>
-                    <p style="color: red;">(Bottom Divergence)</p>
+                    <p style="color: red; font-size:12px;">(Bottom Divergence)</p>
                   </div>
-                  <div class="col-9 text-start">
+                  <div class="col-10 text-start">
                     <small class="form-text text-muted">支援的時間間隔為：1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo。</small><br>
                     <small class="form-text text-muted">時間間隔為1m的話，時長不可超過7天，時間間隔小於1天的話，時長建議不大於60天。</small><br>
                     <small class="form-text text-muted">單位代碼為分鐘m, 小時h, 天d, 週wk, 月mo, 年y。</small>
